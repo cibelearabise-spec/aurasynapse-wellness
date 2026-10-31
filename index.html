@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AURA SYNAPSE // Futuristic Wellness Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#DCE9E8;--tx:#071C27;--mut:#477C8B;--line:rgba(7,28,39,.16);--trk:rgba(36,85,104,.18);--acc:#245568;--glow:rgba(36,85,104,.3);--onacc:#DCE9E8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#071C27;--tx:#DCE9E8;--mut:#91B3B9;--line:rgba(220,233,232,.16);--trk:rgba(145,179,185,.16);--acc:#91B3B9;--glow:rgba(145,179,185,.45);--onacc:#071C27}}
+:root[data-theme="dark"]{--bg:#071C27;--tx:#DCE9E8;--mut:#91B3B9;--line:rgba(220,233,232,.16);--trk:rgba(145,179,185,.16);--acc:#91B3B9;--glow:rgba(145,179,185,.45);--onacc:#071C27}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--tx);font:500 15px/1.45 Manrope,system-ui,sans-serif}
+.bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.bg i{position:absolute;border-radius:50%;filter:blur(30px);animation:drift 24s ease-in-out infinite alternate}
+.bg i:nth-child(1){width:380px;height:380px;left:-6%;top:6%;background:radial-gradient(circle,#477C8B,transparent 70%);opacity:.8}
+.bg i:nth-child(2){width:420px;height:420px;right:-8%;top:44%;background:radial-gradient(circle,#91B3B9,transparent 70%);opacity:.45;animation-delay:-9s}
+.bg i:nth-child(3){width:320px;height:320px;left:30%;bottom:-6%;background:radial-gradient(circle,#245568,transparent 70%);animation-delay:-15s}
+@keyframes drift{to{transform:translate(70px,-60px) scale(1.2)}}
+@media(prefers-reduced-motion:reduce){.bg i{animation:none}}
+.app{position:relative;z-index:1;max-width:430px;margin:0 auto;min-height:100vh;padding:18px 16px 110px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.top small{color:var(--mut);display:block}
+h1{margin:0;font-size:24px;font-weight:700}
+h2{margin:0;font-size:16px;font-weight:600}
+.brand{font:700 11px Orbitron,sans-serif;letter-spacing:.14em;color:var(--mut)}
+.chip{padding:7px 14px;border-radius:99px;border:1px solid var(--line);background:var(--trk);font-size:13px;white-space:nowrap}
+.view{display:none;flex-direction:column;gap:14px}.view.on{display:flex}
+.card{position:relative;border-radius:32px;padding:20px;border:1px solid rgba(255,255,255,.2);background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.03) 55%,rgba(145,179,185,.09));backdrop-filter:blur(10px) saturate(1.5);-webkit-backdrop-filter:blur(10px) saturate(1.5);backdrop-filter:url(#refract) blur(8px) saturate(1.6) brightness(1.06);box-shadow:0 24px 44px -26px rgba(0,0,0,.7),inset 1.5px 1.5px 0 rgba(255,255,255,.35),inset -1px -1px 0 rgba(255,255,255,.1)}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,.18),transparent 30%)}
+.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.sub{color:var(--mut);font-size:13px}
+.pill{display:inline-block;padding:4px 10px;border-radius:99px;background:rgba(145,179,185,.2);font-size:12px}
+button{font:inherit;color:var(--tx);background:var(--trk);border:1px solid var(--line);border-radius:99px;padding:10px 16px;cursor:pointer;transition:background .2s,transform .15s}
+button:active{transform:scale(.96)}
+button.on{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+.seg{display:flex;padding:4px;border-radius:99px;background:var(--trk);border:1px solid var(--line)}
+.seg button{flex:1;border:0;background:transparent;padding:9px 6px;font-size:13px}.seg button.on{background:var(--tx);color:var(--bg)}
+/* ring */
+.hero{text-align:center}
+.ringw{position:relative;width:220px;margin:6px auto 4px}
+.ringw svg{width:100%;transform:rotate(-90deg);overflow:visible}
+.ringw circle{fill:none;stroke-width:9;stroke-linecap:round}
+.ringw .t{stroke:var(--trk)}
+.ringw .v{stroke:url(#rg);stroke-dasharray:527.8;stroke-dashoffset:527.8;transition:stroke-dashoffset 1.2s;filter:drop-shadow(0 0 10px var(--glow))}
+.ringc{position:absolute;inset:0;display:grid;place-content:center;gap:2px}
+.ringc b{font-size:46px;font-weight:700;line-height:1}
+.ticks{display:flex;align-items:flex-end;justify-content:space-between;height:36px;margin-top:10px}
+.ticks i{width:4px;border-radius:4px;background:var(--acc);opacity:.7;transition:height .8s}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mini b{display:block;font-size:26px;font-weight:700}
+.bar{height:10px;border-radius:99px;background:var(--trk);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#477C8B,#DCE9E8);transition:width .6s}
+.big{font-size:34px;font-weight:700}
+/* orb */
+.stage{display:grid;place-items:center;height:250px}
+.orb{position:relative;z-index:0;width:120px;height:120px;border-radius:50%;display:grid;place-items:center;text-align:center;color:#EAFDFF;text-shadow:0 0 10px #7FE3F0,0 0 22px #7FE3F0;background:radial-gradient(circle at 50% 45%,#0e3f50 0,#0f4d60 48%,#2a8fa3 80%,#8AEFFA 100%);border:2px solid #CFF8FF;box-shadow:0 0 8px #CFF8FF,0 0 24px #7FE3F0,0 0 56px rgba(95,212,224,.8),0 0 110px rgba(95,212,224,.5),inset 0 0 24px rgba(207,248,255,.75),inset 0 0 60px rgba(95,212,224,.45);transition:transform 4s linear,box-shadow 4s linear}
+.orb.big{transform:scale(1.55);box-shadow:0 0 10px #fff,0 0 34px #9FF0FA,0 0 80px rgba(95,212,224,.95),0 0 160px rgba(95,212,224,.65),inset 0 0 30px rgba(207,248,255,.95),inset 0 0 80px rgba(95,212,224,.65)}
+.orb::before{content:"";position:absolute;inset:-16px;z-index:-1;border-radius:50%;background:conic-gradient(from 0deg,transparent,#7FE3F0 18%,transparent 42%,#DCE9E8 62%,transparent 80%);filter:blur(12px);opacity:.85;animation:spin 6s linear infinite}
+.orb::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:2px solid #7FE3F0;box-shadow:0 0 14px #7FE3F0,inset 0 0 14px #7FE3F0;animation:pulse 2.6s ease-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%{transform:scale(.96);opacity:.9}100%{transform:scale(1.35);opacity:0}}
+.orb b{display:block;font-size:12px;letter-spacing:.08em}.orb span{font-size:24px;font-weight:700}
+@media(prefers-reduced-motion:reduce){.orb{transition:none}.orb::before,.orb::after{animation:none}}
+/* tasks */
+.task{display:flex;gap:12px;align-items:center;padding:13px 0;border-top:1px solid var(--line)}
+.task input{accent-color:var(--acc);width:20px;height:20px}
+.task em{margin-left:auto;font-style:normal;color:var(--mut);font-size:13px}
+/* terminal */
+#log{height:300px;overflow:auto;padding:14px;border-radius:22px;background:rgba(7,28,39,.6);color:#DCE9E8;font:13px/1.5 ui-monospace,Menlo,monospace;white-space:pre-wrap}
+#log .u{color:#91B3B9}
+.cli{display:flex;gap:8px;margin-top:12px}
+.cli input{flex:1;min-width:0;font:inherit;color:var(--tx);background:var(--trk);border:1px solid var(--line);border-radius:99px;padding:10px 16px}
+/* nav */
+.nav{position:fixed;z-index:5;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));width:min(398px,calc(100% - 24px));display:flex;gap:4px;padding:8px;border-radius:99px;border:1px solid rgba(255,255,255,.22);background:rgba(7,28,39,.55);backdrop-filter:blur(18px) saturate(1.5);-webkit-backdrop-filter:blur(18px) saturate(1.5)}
+.nav button{flex:1;display:grid;justify-items:center;gap:2px;padding:8px 4px;border:0;background:transparent;color:#91B3B9;font-size:11px}
+.nav button.on{background:#DCE9E8;color:#071C27}
+.nav svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<filter id="refract" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.007 0.011" numOctaves="2" seed="7" result="n"/><feGaussianBlur in="n" stdDeviation="3" result="nb"/><feDisplacementMap in="SourceGraphic" in2="nb" scale="70" xChannelSelector="R" yChannelSelector="G"/></filter>
+<linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#477C8B"/><stop offset=".6" stop-color="#91B3B9"/><stop offset="1" stop-color="#DCE9E8"/></linearGradient></defs></svg>
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<div class="app">
+ <header class="top">
+  <div><span class="brand">AURA SYNAPSE</span><small id="greet" style="margin-top:6px">Bom dia</small><h1>Seu corpo hoje</h1></div>
+  <div class="chip">Nv <b id="lvl">1</b> · <b id="xp">0</b> XP</div>
+ </header>
+
+ <section class="view on" id="v-home">
+  <div class="card hero">
+   <div class="head"><h2>Prontidão</h2><span class="pill" id="state">Estável</span></div>
+   <div class="ringw">
+    <svg viewBox="0 0 200 200"><circle class="t" cx="100" cy="100" r="84"/><circle class="v" id="ring" cx="100" cy="100" r="84"/></svg>
+    <div class="ringc"><b id="en">78%</b><span class="sub">Energy Reserve</span></div>
+   </div>
+   <div class="ticks" id="ticks" aria-hidden="true"></div>
+  </div>
+  <div class="grid2">
+   <div class="card mini"><div class="sub">HRV Harmony</div><b id="hrv">64 ms</b><span class="pill" id="hrvs">Pronto</span></div>
+   <div class="card mini"><div class="sub">Stress Load</div><b id="st">32%</b><span class="pill" id="sts">Baixo</span></div>
+  </div>
+  <div class="card">
+   <div class="head"><h2>Hidratação quântica</h2><span class="pill" id="hp">0%</span></div>
+   <div class="big"><span id="ml">0</span> <span class="sub">/ 3000 ml</span></div>
+   <div class="bar" style="margin:10px 0 14px"><i id="hbar"></i></div>
+   <div class="row"><button data-ml="250">+250 ml</button><button data-ml="500">+500 ml</button><button id="hreset">Zerar</button></div>
+  </div>
+  <div class="card">
+   <div class="head"><h2>Crono-nutrição</h2><span class="pill" id="nwin"></span></div>
+   <p id="nrec" style="margin:0"></p>
+  </div>
+ </section>
+
+ <section class="view" id="v-mind">
+  <div class="card">
+   <div class="head"><h2>Respiração em caixa</h2><span class="pill">4 · 4 · 4 · 4</span></div>
+   <div class="stage"><div class="orb" id="orb"><div><b id="phase">PRONTO</b><span id="count">4</span></div></div></div>
+   <button id="breath" style="width:100%">Iniciar respiração</button>
+  </div>
+  <div class="card">
+   <div class="head"><h2>Ondas binaurais</h2><span class="pill">Fones</span></div>
+   <div class="row"><button data-hz="10" class="bin">Alpha 10 Hz · foco</button><button data-hz="2.5" class="bin">Delta 2,5 Hz · sono</button><button id="stopbin">Parar</button></div>
+   <p class="sub" id="binmsg" style="margin:12px 0 0">Cada ouvido recebe uma frequência diferente.</p>
+  </div>
+ </section>
+
+ <section class="view" id="v-kin">
+  <div class="card">
+   <div class="head"><h2>Kinetix Protocol</h2><span class="pill" id="prog">0/4</span></div>
+   <div class="seg" id="modes"></div>
+   <div id="tasks" style="margin-top:12px"></div>
+  </div>
+ </section>
+
+ <section class="view" id="v-ai">
+  <div class="card">
+   <div class="head"><h2>Terminal Cyber AI</h2><span class="pill">biohacking</span></div>
+   <div id="log" role="log" aria-live="polite"></div>
+   <div class="cli"><input id="cmd" placeholder="recuperação, sono, energia…" aria-label="Comando"><button id="send">Enviar</button></div>
+  </div>
+ </section>
+</div>
+
+<nav class="nav" aria-label="Navegação">
+ <button class="on" data-v="home"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4z"/></svg>Início</button>
+ <button data-v="mind"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>Mente</button>
+ <button data-v="kin"><svg viewBox="0 0 24 24"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg>Kinetix</button>
+ <button data-v="ai"><svg viewBox="0 0 24 24"><path d="M5 7l5 5-5 5M13 18h6"/></svg>Terminal</button>
+</nav>
+
+<script>
+const $=s=>document.querySelector(s);
+const hr=new Date().getHours();
+$('#greet').textContent=hr<12?'Bom dia':hr<18?'Boa tarde':'Boa noite';
+/* Navegação */
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('on',x===b));
+ document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));window.scrollTo(0,0)});
+/* XP */
+let xp=0;
+function addXp(n){xp=Math.max(0,xp+n);$('#xp').textContent=xp;$('#lvl').textContent=Math.floor(xp/100)+1}
+/* Métricas */
+const M={energy:78,stress:32,hrv:64,hyd:0};
+const T=$('#ticks');for(let i=0;i<32;i++)T.appendChild(document.createElement('i'));
+function paint(){
+ $('#ring').style.strokeDashoffset=527.8*(1-M.energy/100);
+ $('#en').textContent=Math.round(M.energy)+'%';
+ $('#hrv').textContent=Math.round(M.hrv)+' ms';$('#st').textContent=Math.round(M.stress)+'%';
+ $('#state').textContent=M.energy>70?'Pico':M.energy>45?'Estável':'Recuperar';
+ $('#hrvs').textContent=M.hrv>55?'Pronto':'Atenção';
+ $('#sts').textContent=M.stress<40?'Baixo':M.stress<65?'Moderado':'Alto'}
+function tick(){T.childNodes.forEach(t=>t.style.height=(8+Math.random()*28*(M.energy/100+.3))+'px')}
+setInterval(()=>{M.energy=Math.min(96,Math.max(15,M.energy+Math.random()*6-3));M.stress=Math.min(90,Math.max(8,M.stress+Math.random()*6-3));M.hrv=Math.min(95,Math.max(25,M.hrv+Math.random()*6-3));paint()},3500);
+setInterval(tick,1400);
+/* Hidratação */
+let ml=0;
+function hyd(d){ml=Math.max(0,Math.min(4000,ml+d));const p=Math.min(100,ml/30);$('#ml').textContent=ml;$('#hbar').style.width=p+'%';$('#hp').textContent=Math.round(p)+'%'}
+document.querySelectorAll('[data-ml]').forEach(b=>b.onclick=()=>hyd(+b.dataset.ml));
+$('#hreset').onclick=()=>hyd(-ml);
+/* Respiração */
+const names=['INSPIRAR','RETER','EXPIRAR','PAUSA'];let bt=null,bi=0,bs=4;
+function stepB(){const n=names[bi];$('#phase').textContent=n;$('#count').textContent=bs;
+ if(bs===4){if(n==='INSPIRAR')$('#orb').classList.add('big');if(n==='EXPIRAR')$('#orb').classList.remove('big')}}
+$('#breath').onclick=function(){
+ if(bt){clearInterval(bt);bt=null;this.textContent='Iniciar respiração';$('#orb').classList.remove('big');$('#phase').textContent='PRONTO';$('#count').textContent=4;return}
+ this.textContent='Parar respiração';bi=0;bs=4;stepB();
+ bt=setInterval(()=>{bs--;if(bs===0){bi=(bi+1)%4;bs=4}stepB()},1000)};
+/* Binaural */
+let ctx=null,nodes=null;
+function stopBin(){if(!nodes)return;nodes.g.gain.linearRampToValueAtTime(0,ctx.currentTime+.5);const n=nodes;setTimeout(()=>{try{n.l.stop();n.r.stop()}catch(e){}},600);nodes=null;document.querySelectorAll('.bin').forEach(b=>b.classList.remove('on'))}
+document.querySelectorAll('.bin').forEach(b=>b.onclick=()=>{
+ try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();ctx.resume();stopBin();
+ const hz=parseFloat(b.dataset.hz),g=ctx.createGain();g.gain.value=0;g.connect(ctx.destination);
+ const mk=(f,p)=>{const o=ctx.createOscillator();o.frequency.value=f;const pn=ctx.createStereoPanner();pn.pan.value=p;o.connect(pn);pn.connect(g);o.start();return o};
+ nodes={g,l:mk(200,-1),r:mk(200+hz,1)};g.gain.linearRampToValueAtTime(.18,ctx.currentTime+1);
+ b.classList.add('on');$('#binmsg').textContent='Ativo: '+(hz===10?'Alpha 10 Hz, foco e flow.':'Delta 2,5 Hz, sono profundo.')+' Portadora 200 Hz.'}
+ catch(e){$('#binmsg').textContent='Áudio indisponível neste navegador.'}});
+$('#stopbin').onclick=()=>{stopBin();$('#binmsg').textContent='Áudio parado.'};
+/* Kinetix */
+const P={
+ rec:['Recuperar',[['Banho frio de 3 minutos',30],['Magnésio e proteína pós-treino',25],['Mobilidade guiada, 10 minutos',25],['Respiração 4-4-4-4',20]]],
+ peak:['Performance',[['Cafeína com L-teanina',20],['Aquecimento dinâmico',30],['Foco profundo, 90 minutos',40],['Creatina cronológica',10]]],
+ sleep:['Sono',[['Desativar luz azul',30],['Magnésio glicinato',20],['Quarto a 18 °C',20],['Delta 2,5 Hz por 20 minutos',30]]]};
+const done={};let mode='rec';
+function drawK(){
+ $('#modes').innerHTML=Object.keys(P).map(k=>`<button data-m="${k}" class="${k===mode?'on':''}">${P[k][0]}</button>`).join('');
+ document.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{mode=b.dataset.m;drawK()});
+ $('#tasks').innerHTML=P[mode][1].map((t,i)=>`<label class="task"><input type="checkbox" data-i="${i}" ${done[mode+i]?'checked':''}>${t[0]}<em>+${t[1]} XP</em></label>`).join('');
+ document.querySelectorAll('#tasks input').forEach(c=>c.onchange=()=>{const i=+c.dataset.i,x=P[mode][1][i][1];done[mode+i]=c.checked;addXp(c.checked?x:-x);prog()});prog()}
+function prog(){const n=P[mode][1].filter((_,i)=>done[mode+i]).length;$('#prog').textContent=n+'/'+P[mode][1].length}
+drawK();
+/* Nutrição */
+const N=hr<10?['Ativação','Insumos de alta carga elétrica: ovos, frutas vermelhas, aveia e água com sal marinho. Priorize proteína e luz natural.']
+:hr<14?['Pico','Refeição completa com proteína magra, vegetais crucíferos e carboidrato complexo para sustentar o foco.']
+:hr<19?['Manutenção','Oleaginosas, iogurte natural e uma fruta. Evite cafeína nas 8 horas antes de dormir.']
+:['Regeneração','Precursores de melatonina: kiwi, cerejas, banana e castanhas. Refeição leve, 3 horas antes de deitar.'];
+$('#nwin').textContent=N[0];$('#nrec').textContent=N[1];
+/* Terminal */
+const log=$('#log');
+function out(t,c){const d=document.createElement('div');if(c)d.className=c;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight}
+const KB=[
+ [/recupera|muscul|treino/,'Recuperação muscular: 1,6 a 2,2 g de proteína por kg ao dia, 7 a 9 horas de sono, mobilidade leve e banho frio ou contraste após sessões intensas.'],
+ [/sono|dormir|ins[oô]nia/,'Higiene do sono: horário fixo, sem telas 60 minutos antes, quarto escuro e a 18 °C, última cafeína até 14h. Ative Delta 2,5 Hz.'],
+ [/energia|foco|cansa/,'Energia e foco: luz solar nos primeiros 30 minutos, hidratação, blocos de 90 minutos com pausa e Alpha 10 Hz.'],
+ [/estress|ansied|calma/,'Estresse: respiração em caixa 4-4-4-4 por 5 minutos, caminhada curta e redução de estimulantes.'],
+ [/hidrat|[aá]gua/,'Hidratação: meta de 3000 ml distribuída ao longo do dia. Use +250 e +500 ml no início.']];
+function run(q){q=q.trim().toLowerCase();if(!q)return;out('> '+q,'u');
+ if(q==='clear'){log.innerHTML='';return}
+ if(q==='help'){out('Tópicos: recuperação, sono, energia, estresse, hidratação, clear');return}
+ const h=KB.find(k=>k[0].test(q));out(h?h[1]:'Comando não reconhecido. Digite help para ver os tópicos.')}
+$('#send').onclick=()=>{run($('#cmd').value);$('#cmd').value=''};
+$('#cmd').onkeydown=e=>{if(e.key==='Enter')$('#send').click()};
+out('AURA//OS online. Digite help para começar.');
+paint();tick();hyd(0);
+</script>
+</body>
+</html>
